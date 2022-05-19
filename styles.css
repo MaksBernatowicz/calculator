@@ -24,3 +24,35 @@ section {
     overflow: hidden;
     box-shadow: 0px 5px 20px 0px rgba(91, 88, 77,1);
 }
+
+.display {
+    background-color: rgba(152, 180, 139, 1);
+    height: 95px;
+    width: 100%;
+    text-align: right;
+    padding: 20px;
+    font-size: 30px;
+    color: rgba(34, 46, 28, 1);
+    position: relative;
+}
+
+.display-calc_history {
+    opacity: 0.5;
+    font-size: 20px;
+    height: 20px;
+}
+
+.display-temp_calc_result {
+    position: absolute;
+    bottom: 0;
+    left: 10px;
+    opacity: 0.5;
+}
+
+.display-author_signature {
+    position: absolute;
+    opacity: 0.4;
+    font-size: 10px;
+    left: 15px;
+    top: 15px;
+}
