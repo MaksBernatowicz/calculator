@@ -26,3 +26,41 @@ clearLastEntityEl.addEventListener('click', (e) => {
     displayResultEl.innerText = '';
     dis2Num = '';
 });
+
+operationEl.forEach(operation => {
+    operation.addEventListener('click',(e) => {
+        if (!dis2Num) return;
+        haveDot = false;
+        const operationName = e.target.innerText;
+        if (dis1Num && dis2Num && lastOperation) {
+            mathOperation();
+        } else {
+            result = parseFloat(dis2Num);
+        }
+        clearVar(operationName);
+        lastOperation = operationName;
+    })
+});
+
+numberEl.forEach( number => {
+    number.addEventListener('click', (e) => {
+        if (e.target.innerText === '.' && !haveDot) {
+            haveDot = true;
+        } else if (e.target.innerText === '.' && haveDot) {
+            return;
+        }
+        dis2Num += e.target.innerText;
+        displayResultEl.innerText = dis2Num;
+    })
+});
+
+equalEl.addEventListener('click', () => {
+    if (!dis2Num || !dis1Num) return;
+    haveDot = false;
+    mathOperation();
+    clearVar();
+    displayResultEl.innerText = result;
+    displayTempResultEl.innerText = '';
+    dis2Num = result;
+    dis1Num = '';
+});
