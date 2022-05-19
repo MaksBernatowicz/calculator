@@ -56,3 +56,9 @@ section {
     left: 15px;
     top: 15px;
 }
+
+.buttons-container {
+    border-radius: 8px;
+    display: grid;
+    grid-template: repeat(4, 1fr) / repeat(4, 1fr);
+}
