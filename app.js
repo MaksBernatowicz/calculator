@@ -13,18 +13,16 @@ let result = null;
 let lastOperation = '';
 let haveDot = false;
 
-clearAllEl.addEventListener('click', (e) => {
-    displayHistoryEl.innerText = '';
-    displayResultEl.innerText = 0;
-    displayTempResultEl.innerText = '';
-    dis1Num = '';
-    dis2Num = '';
-    result = '';
-});
-
-clearLastEntityEl.addEventListener('click', (e) => {
-    displayResultEl.innerText = '';
-    dis2Num = '';
+numberEl.forEach( number => {
+    number.addEventListener('click', (e) => {
+        if (e.target.innerText === '.' && !haveDot) {
+            haveDot = true;
+        } else if (e.target.innerText === '.' && haveDot) {
+            return;
+        }
+        dis2Num += e.target.innerText;
+        displayResultEl.innerText = dis2Num;
+    })
 });
 
 operationEl.forEach(operation => {
@@ -40,29 +38,6 @@ operationEl.forEach(operation => {
         clearVar(operationName);
         lastOperation = operationName;
     })
-});
-
-numberEl.forEach( number => {
-    number.addEventListener('click', (e) => {
-        if (e.target.innerText === '.' && !haveDot) {
-            haveDot = true;
-        } else if (e.target.innerText === '.' && haveDot) {
-            return;
-        }
-        dis2Num += e.target.innerText;
-        displayResultEl.innerText = dis2Num;
-    })
-});
-
-equalEl.addEventListener('click', () => {
-    if (!dis2Num || !dis1Num) return;
-    haveDot = false;
-    mathOperation();
-    clearVar();
-    displayResultEl.innerText = result;
-    displayTempResultEl.innerText = '';
-    dis2Num = result;
-    dis1Num = '';
 });
 
 function clearVar(name = '') {
@@ -86,3 +61,28 @@ function mathOperation() {
         result = parseFloat(result) % parseFloat(dis2Num);
     }
 }
+
+equalEl.addEventListener('click', () => {
+    if (!dis2Num || !dis1Num) return;
+    haveDot = false;
+    mathOperation();
+    clearVar();
+    displayResultEl.innerText = result;
+    displayTempResultEl.innerText = '';
+    dis2Num = result;
+    dis1Num = '';
+});
+
+clearAllEl.addEventListener('click', (e) => {
+    displayHistoryEl.innerText = '';
+    displayResultEl.innerText = 0;
+    displayTempResultEl.innerText = '';
+    dis1Num = '';
+    dis2Num = '';
+    result = '';
+});
+
+clearLastEntityEl.addEventListener('click', (e) => {
+    displayResultEl.innerText = '';
+    dis2Num = '';
+});
