@@ -13,3 +13,16 @@ let result = null;
 let lastOperation = '';
 let haveDot = false;
 
+clearAllEl.addEventListener('click', (e) => {
+    displayHistoryEl.innerText = '';
+    displayResultEl.innerText = 0;
+    displayTempResultEl.innerText = '';
+    dis1Num = '';
+    dis2Num = '';
+    result = '';
+});
+
+clearLastEntityEl.addEventListener('click', (e) => {
+    displayResultEl.innerText = '';
+    dis2Num = '';
+});
