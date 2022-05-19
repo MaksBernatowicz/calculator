@@ -64,3 +64,25 @@ equalEl.addEventListener('click', () => {
     dis2Num = result;
     dis1Num = '';
 });
+
+function clearVar(name = '') {
+    dis1Num += dis2Num + ' ' + name + ' ';
+    displayHistoryEl.innerText = dis1Num;
+    displayResultEl.innerText = '';
+    dis2Num = '';
+    displayTempResultEl.innerText = result;
+}
+
+function mathOperation() {
+    if (lastOperation === 'x') {
+        result = parseFloat(result) * parseFloat(dis2Num);
+    } else if (lastOperation === '+') {
+        result = parseFloat(result) + parseFloat(dis2Num);
+    } else if (lastOperation === '-') {
+        result = parseFloat(result) - parseFloat(dis2Num);
+    } else if (lastOperation === '/') {
+        result = parseFloat(result) / parseFloat(dis2Num);
+    } else if (lastOperation === '%') {
+        result = parseFloat(result) % parseFloat(dis2Num);
+    }
+}
